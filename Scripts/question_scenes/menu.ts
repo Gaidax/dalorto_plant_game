@@ -1,0 +1,33 @@
+module question_scenes {
+//200,200
+    export class MenuScene extends createjs.Container {
+        private basil_btn = new objects.Option("India", 450,295, true);
+        private parsley_btn = new objects.SpriteObject(core.buttonAtlas,"Reset", 450,395);
+        private tomato_btn = new objects.SpriteObject(core.buttonAtlas,"Reset", 450,495);
+        private zucchini_btn = new objects.SpriteObject(core.buttonAtlas,"Reset", 450,595);
+        private lettuce_btn = new objects.SpriteObject(core.buttonAtlas,"Reset", 450,695);
+        private eggplant_btn = new objects.SpriteObject(core.buttonAtlas,"Reset", 450,795);
+        private title = new createjs.Bitmap(core.assets.getResult("title")); // 325,595);
+        private background = new objects.Background("background");
+        constructor() {
+            super();
+            core.reset();
+            //var start_b = new createjs.ButtonHelper(this.start_btn);
+            //start_b.overLabel = 1;
+            //start_b.outLabel = 0;
+            this.alpha = 0;
+            this.addChild(this.background);
+            this.addChild(this.basil_btn);
+            this.title.x = 200;
+            this.title.y = 165;
+            //this.addChild(this.title);
+            this.basil_btn.on("click", function() {
+                //createjs.Tween.get(this).to({ alpha: 0 }, 1000);
+                core.scene = "BASIL";
+                core.changeMenuScene();
+            });
+            core.transition(this);  
+        }
+
+    }
+}
